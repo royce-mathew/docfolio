@@ -1,26 +1,22 @@
 import { Metadata } from "next"
 import { Project, projects } from "#site/content"
+import config from "@/config/data"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 import ProjectButton from "@/components/custom/project-button"
 
-// Environment variables
-const websiteUrl =
-  process.env.NEXT_PUBLIC_WEBSITE_URL || "http://localhost:3000"
-const fullName = process.env.NEXT_PUBLIC_FULL_NAME || "Username"
-
 // Convert env variables
-const shortUrl = new URL(websiteUrl).hostname
+const shortUrl = new URL(config.websiteURL).hostname
 
 // SEO Metadata
 export const metadata: Metadata = {
-  title: `Projects | ${fullName}`,
+  title: `Projects | ${config.name}`,
   description: `${shortUrl} - List of all projects`,
   keywords: [...projects.map((project) => project.title)],
   openGraph: {
-    url: `${websiteUrl}/projects`,
+    url: `${config.websiteURL}/projects`,
     type: "website",
-    title: `Projects | ${fullName}`,
+    title: `Projects | ${config.name}`,
     description: `${shortUrl} - List of all projects`,
     images: [
       ...projects.map((project) => ({
@@ -33,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Projects | ${fullName}`,
+    title: `Projects | ${config.name}`,
     description: `${shortUrl} - List of all projects`,
     images: [
       ...projects.map((project) => ({
@@ -45,7 +41,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: `${websiteUrl}/projects`,
+    canonical: `${config.websiteURL}/projects`,
   },
 }
 

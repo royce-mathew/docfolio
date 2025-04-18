@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: `${shortUrl} - Portfolio website`,
     images: [
       {
-        url: `${config.websiteURL}/images/ProfilePicture2.webp`,
+        url: `${config.websiteURL}/${config.profilePicture}`,
         width: 1200,
         height: 630,
         alt: config.name,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description: `${shortUrl} - Portfolio website`,
     images: [
       {
-        url: `${config.websiteURL}/images/ProfilePicture2.webp`,
+        url: `${config.websiteURL}/${config.profilePicture}`,
         width: 1200,
         height: 630,
         alt: config.name,
