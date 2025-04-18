@@ -1,12 +1,10 @@
 # Overview
 
-> A Portfolio Markdown Rendering Template Built with Next.js.
-
 <div style="display: flex; align-items: center; gap: 20px;">
    <a href="https://github.com/royce-mathew/r0yce">
-      <img src="./public/favicon.png" alt="Spyder" height="100" />
+      <img src="./public/favicon.png" alt="Spyder" height="50" />
    </a>
-   <img src="public/images/LighthouseReport.png" alt="Lighthouse Report"  />
+   <b>A Portfolio Markdown Rendering Template Built with Next.js.</b>
 </div>
 
 ## Preview
@@ -14,6 +12,10 @@
 ![image](https://github.com/user-attachments/assets/f64c2265-3201-41a4-9312-151803339b7d)
 
 This portfolio website leverages Next.js to serve MDX content in a flexible environment, supporting both static site generation and on-demand server rendering. The application tracks content for each page, including projects, blog posts, and other resources, using MDX files to store metadata and content.
+
+### Lighthouse Report
+
+   <img src="public/images/LighthouseReport.png" alt="Lighthouse Report"  width="100%" style="border-radius: 10px; margin-top: 20px;" />
 
 ## Installation
 
