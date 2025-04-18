@@ -12,7 +12,7 @@ const config = {
   name: "Your Name", // Your name as it appears on the website
   roles: ["🎓 4th Year Student", "💻 Software Engineer", "🎮 Game Developer"], // List of 3 roles or professions
   email: "your.email@example.com", // Your email address
-  profilePicture: "/images/ProfilePicture.webp", // Path / URL to your profile picture
+  profilePicture: "/images/ProfilePicture.png", // Path / URL to your profile picture
   socialLinks: {
     // Social media links
     github: "https://github.com/yourusername",
