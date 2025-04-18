@@ -27,6 +27,24 @@ To install the project, follow these steps:
 3. Run the development server using the `dev` command.
 4. To build the application for production, use the `build` command.
 
+## Configuration
+
+### Configuring Theming and SEO
+
+To configure SEO and metadata, you can go to [`src/config/data.ts`](./src/config/data.ts) and modify the `config` object. This object contains properties like `name`, `roles`, `email`, for customization, and `seo` for SEO optimization.
+
+You can change the the name, badge, and links for your github, linkedin and email from here.
+
+You can also change the `theme` object in [`src/styles/globals.css`](./src/styles/globals.css) to customize the theme further.
+
+### Configuring Home Page
+
+For configuring the about me section, you can go to [`src/content/main/about.mdx`](./src/content/main/about.mdx) and modify the content there. This file contains the content for the about me section of the home page.
+
+### Configuring Projects
+
+For configuring the projects section, you can go to [`src/content/projects`](./src/content/projects) and modify the content there. This folder contains the content for the projects section of the home page.
+
 ## Commands
 
 Common commands are defined in the `package.json` file. You can run these commands using your preferred package manager.
