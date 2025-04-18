@@ -1,0 +1,105 @@
+---
+title: Kanjou
+label: { text: "New!" }
+description: A Realtime Collaborative Text Editor
+tags: [typescript, react, nextjs, firebase]
+imageSrc: /projects/kanjou.webp
+publishedDate: 2024-05-14
+modifiedDate: 2025-02-16
+hasToc: true
+columnSpan: 2
+rowSpan: 2
+featured: true
+---
+
+# Overview
+
+Kanjou is a realtime collaborative text editor which saves your data to firebase.
+
+The app allows multiple users to edit documents in real-time. It also supports `syntax highlighting` for various programming languages.
+Kanjou was inspired from Notion and Google Docs, and aims to provide a similar but better experience for users.
+
+### Motivation
+
+I have always been fascinated by realtime applications and wanted to build one myself. I was also in need of a note taking app for myself and thought of building one which can be used by multiple users at the same time.
+
+I wanted to create the new document app in a format that I was comfortable with, which is markdown. I also wanted to add syntax highlighting to the app, so that users can write code snippets inside the app itself.
+
+## Technologies
+
+- 🖥️ **Next.js** for server-side rendering
+- 🔥 **Firebase** for authentication and data storage
+- 🛡️ **Authjs v5** for user authentication
+- 📝 **Tiptap** for rich text editing
+
+### Learning Experience
+
+During the development of Kanjou, I learned how to use the Firebase SDK to work with user authentication and data storage. There were several struggles during the development of the app.
+
+The initial struggle I faced was regarding authentication. I wanted to use Firebase for storing user sessions and also handle data. Since I was using the `next-auth` package, there was an available Firebase adapter for storing the user session.
+
+## Workarounds
+
+There were several roadblocks I faced during the development of Kanjou.
+
+<br/>
+<Accordion type="multiple" defaultValue={["p1", "p2"]} className="rounded bg-foreground/5 px-4">
+    <AccordionItem value="p1">
+        <AccordionTrigger>
+            Middleware Implementation
+        </AccordionTrigger>
+        <AccordionContent>
+            When using the firebase adapter, you cannot call the `auth()` method inside `middleware.ts`, instead you need to have a workaround. The `auth()` function currently does not work because of the `firebase-admin` package not being able to be used in the browser. The workaround is to use the `getToken` function from the `@auth/core/jwt` package.
+
+            ```typescript {8-13} title="middleware.ts" showLineNumbers
+            import { NextRequest, NextResponse } from "next/server"
+            import { getToken } from "@auth/core/jwt"
+
+            const secure = process.env.NODE_ENV === "production"
+
+            export default async function middleware(req: NextRequest) {
+                // Retrieve the user data from the JWT token
+                const userData = await getToken({
+                    secureCookie: secure,
+                    req,
+                    secret: process.env.AUTH_SECRET ?? "",
+                    salt: secure ? "__Secure-authjs.session-token" : "authjs.session-token",
+                })
+                const isLoggedIn = !!userData
+
+                if (!isLoggedIn) {
+                    // Redirect to login page if the user is not logged in
+                    const { nextUrl } = req
+                    let callbackUrl = nextUrl.pathname
+                    if (nextUrl.search) {
+                        callbackUrl += nextUrl.search
+                    }
+
+                    // Encode the callback URL to ensure proper redirection
+                    const encodedCallbackUrl = encodeURIComponent(callbackUrl)
+                    return NextResponse.redirect(
+                        new URL(`/api/auth/signin?callbackUrl=${encodedCallbackUrl}`, req.url)
+                    )
+                }
+            }
+            ```
+        </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="p2">
+        <AccordionTrigger>
+            Realtime Firebase Synchronization
+        </AccordionTrigger>
+        <AccordionContent>
+            For reading all documents, I had to use the `onSnapshot` method from the Firebase Client SDK. This method listens to changes in the document and updates the data in realtime. The `onSnapshot` method is used to listen to changes in the document and update the data in realtime.
+
+            The real problem I faced was when I had to update the document in realtime. I had to use the `set` method from the Firebase Client SDK to update the document. Although there is no problem with the `set` method, the problem arises when multiple requests are being set everytime the user makes a change.
+
+            This is because the `set` method overwrites the document with the new data, which can cause data loss if multiple users are editing the document at the same time.
+
+
+
+        </AccordionContent>
+    </AccordionItem>
+
+</Accordion>
+<br/>

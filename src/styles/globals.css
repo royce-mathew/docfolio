@@ -1,0 +1,234 @@
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@import "tailwindcss";
+
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 210 0% 10%;
+    --border: 20 5.9% 90%;
+    --card: 0 0% 98%;
+    --popover: 0 0% 98%;
+    --sidebar: 0 0% 98%;
+    --card-foreground: 210 0% 10%;
+    --popover-foreground: 210 0% 10%;
+    --sidebar-foreground: 210 0% 10%;
+    --primary: 205 100% 41%;
+    --sidebar-primary: 205 100% 41%;
+    --primary-foreground: 0 0% 95%;
+    --sidebar-primary-foreground: 0 0% 95%;
+    --secondary: 210 0% 85%;
+    --accent: 210 0% 85%;
+    --sidebar-accent: 210 0% 85%;
+    --secondary-foreground: 0 0% 10%;
+    --accent-foreground: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --muted: 189 0% 88%;
+    --muted-foreground: 228 0% 50%;
+    --destructive: 0 85% 51%;
+    --destructive-foreground: 0 0% 95%;
+    --sidebar-border: 200 0% 82%;
+    --input: 20 5.9% 90%;
+    --ring: 205 15% 77%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 169 0% 9%;
+    --foreground: 240 0% 95%;
+    --border: 12 6.5% 15.1%;
+
+    --card: 169 0% 9%;
+    --popover: 169 0% 9%;
+    --sidebar: 169 0% 9%;
+    --card-foreground: 240 0% 95%;
+    --popover-foreground: 240 0% 95%;
+    --sidebar-foreground: 240 0% 95%;
+    --primary: 205 100% 52%;
+    --sidebar-primary: 205 100% 52%;
+    --primary-foreground: 0 0% 95%;
+    --sidebar-primary-foreground: 0 0% 95%;
+    --secondary: 170 0% 17%;
+    --accent: 170 0% 17%;
+    --sidebar-accent: 170 0% 17%;
+    --secondary-foreground: 0 0% 95%;
+    --accent-foreground: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --muted: 170 0% 22%;
+    --muted-foreground: 200 0% 60%;
+    --destructive: 0 85% 54%;
+    --destructive-foreground: 0 0% 95%;
+    --input: 12 6.5% 15.1%;
+    --ring: 205 20% 25%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@utility step {
+  counter-increment: step;
+
+  &:before {
+    @apply absolute inline-flex size-10 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-extrabold not-italic;
+    @apply mt-[-10px] ml-[-73px];
+    content: counter(step);
+  }
+}
+
+@utility unordered-step {
+  counter-increment: step;
+
+  &:before {
+    @apply absolute inline-flex size-10 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
+    @apply mt-[-6px] ml-[-73px];
+    content: "•";
+  }
+}
+
+@utility halftone {
+  --mask: linear-gradient(to top, rgb(0 0 0) 10%, transparent 30%);
+  --stop1: 0.1rem;
+  --stop2: 0.5rem;
+  --invert: 0;
+  --dotColor: var(--color-background);
+  --dottedBackground: radial-gradient(
+    circle at center,
+    var(--dotColor) var(--stop1),
+    transparent var(--stop2)
+  );
+  --bgSize: 0.4rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--dottedBackground);
+    background-size: var(--bgSize, 1rem) var(--bgSize, 1rem);
+    background-repeat: round;
+    background-position:
+      0 0,
+      50% var(--bgPosition);
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+}
+
+@utility prose {
+  color: inherit;
+  --tw-prose-body: inherit;
+  --tw-prose-headings: inherit;
+  --tw-prose-lead: inherit;
+  --tw-prose-links: inherit;
+  --tw-prose-bold: inherit;
+  --tw-prose-counters: inherit;
+  --tw-prose-bullets: inherit;
+  --tw-prose-hr: inherit;
+  --tw-prose-quotes: inherit;
+  --tw-prose-quote-borders: inherit;
+  --tw-prose-captions: inherit;
+  --tw-prose-kbd: inherit;
+  --tw-prose-kbd-shadows: inherit;
+  --tw-prose-code: inherit;
+  --tw-prose-pre-code: inherit;
+  --tw-prose-pre-bg: inherit;
+  --tw-prose-th-borders: inherit;
+  --tw-prose-td-borders: inherit;
+  --tw-prose-invert-body: inherit;
+  --tw-prose-invert-headings: inherit;
+  --tw-prose-invert-lead: inherit;
+  --tw-prose-invert-links: inherit;
+  --tw-prose-invert-bold: inherit;
+  --tw-prose-invert-counters: inherit;
+  --tw-prose-invert-bullets: inherit;
+  --tw-prose-invert-hr: inherit;
+  --tw-prose-invert-quotes: inherit;
+  --tw-prose-invert-quote-borders: inherit;
+  --tw-prose-invert-captions: inherit;
+  --tw-prose-invert-kbd: inherit;
+  --tw-prose-invert-kbd-shadows: inherit;
+  --tw-prose-invert-code: inherit;
+  --tw-prose-invert-pre-code: inherit;
+  --tw-prose-invert-pre-bg: inherit;
+  --tw-prose-invert-th-borders: inherit;
+  --tw-prose-invert-td-borders: inherit;
+}
+
+/**
+ * This injects Tailwind's component classes and any component classes
+ * registered by plugins.
+ */
+
+/**
+ * This injects Tailwind's utility classes and any utility classes registered
+ * by plugins.
+ */
+
+@layer utilities {
+  /**
+ * Use this directive to control where Tailwind injects the hover, focus,
+ * responsive, dark mode, and other variants of each class.
+ *
+ * If omitted, Tailwind will append these classes to the very end of
+ * your stylesheet by default.
+ */
+  ::selection {
+    @apply bg-foreground/10 text-primary;
+  }
+
+  h2 a,
+  h3 a,
+  h4 a {
+    @apply flex items-center duration-200 hover:text-primary hover:transition-colors;
+
+    svg {
+      @apply ml-1 opacity-0 transition-opacity duration-200;
+    }
+  }
+
+  h2 a:hover,
+  h3 a:hover,
+  h4 a:hover {
+    svg {
+      @apply opacity-100;
+    }
+  }
+}

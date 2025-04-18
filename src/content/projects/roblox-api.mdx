@@ -1,0 +1,93 @@
+---
+title: RobloxApi
+description: An open source async Rust API wrapper for Roblox.
+tags: [rust, api, roblox]
+imageSrc: /projects/robloxapi.webp
+links:
+  github: https://github.com/royce-mathew/robloxapi
+publishedDate: 2022-12-21
+modifiedDate: 2024-04-08
+columnSpan: 1
+hasToc: true
+---
+
+# Overview
+
+{/* [![Latest Version](https://img.shields.io/crates/v/robloxapi.svg)](https://crates.io/crates/robloxapi) */}
+
+{/* [![Docs](https://img.shields.io/badge/docs.rs-robloxapi-green)](https://docs.rs/robloxapi) */}
+
+## What is this?
+
+RobloxApi is a rust library that wraps Roblox's web api endpoints into Rust compatible format and allows for cookie based authorization. The wrapper seamlessly integrates users, groups, games, and payment services into Rust-compatible formats for easy access and manipulation. This project originally started as a simple fork and grew to be something more with time.
+
+## Use Case
+
+This library is being used in a program being hosted on a RaspberryPi which listens for requests from Roblox servers and then creates a developer product based on the contents of the request.
+
+Using this library, I was able to create the custom Donation System for [Toshiko - Tokyo Undying](/projects/toshiko)
+
+## Implementations
+
+- Complete Refactor of the original source code
+- Added Error Handling for API Requests
+- Changed how the Http client is used and accessed across functions
+- Added compatibility for multiple Http clients to access different cookies
+
+<br />
+<br />
+
+# Documentation
+
+## Installation
+
+You can install the library by running `cargo add robloxapi`
+
+### Retrieving Users
+
+Example of retrieving a given user, three different ways!
+
+```rust showLineNumbers
+use robloxapi;
+use tokio;
+
+// The cookie is needed for several api endpoints; Specifically those which interact with acccount / game data.
+const COOKIE: &str = ""
+
+#[tokio::main]
+async fn main() {
+    let mut client = rbxapi::Client::new(); // Create new client Instance
+    client.set_cookie(COOKIE).await; // Set the cookie for the client instance
+
+    // Example on getting users
+    let my_user = client.current_user().await?; // Get the current user
+    let str_user = client.user("builderman").await?; // Get user by username
+    let int_user = client.user(156).await?; // Get user by userid
+}
+```
+
+### Developer Products / Games
+
+```rust showLineNumbers
+use robloxapi;
+use tokio;
+
+const COOKIE: &str = ""
+
+#[tokio::main]
+async fn main() {
+   let place_id = 7415484311; // Place ID for game
+   let mut client = robloxapi::Client()::new(); // Create a new client instance
+   client.set_cookie(COOKIE).await; // We need to set the cookie if we want to have permissions for creating developer products
+
+   // Create a new game given place id
+   let mut game = client.game(place_id).await?;
+
+    // Returns a ApiResult which can be unwrapped to a value or a APIError
+    let dev_product = game.create_dev_product(
+        "name-of-dev-product", // Name of the developer product
+        17 // Price of the developer product
+    ).await?;
+}
+
+```

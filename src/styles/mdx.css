@@ -1,0 +1,85 @@
+/* Apply Code themes based on color mode */
+@reference "./globals.css";
+
+/* Remove the old @media rules and replace them with: */
+
+@media (prefers-color-scheme: dark) {
+  pre code[data-theme],
+  pre code[data-theme] span {
+    color: var(--shiki-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  pre code[data-theme],
+  pre code[data-theme] span {
+    color: var(--shiki-light);
+  }
+}
+
+/* Style outer block */
+[data-rehype-pretty-code-figure] {
+  @apply mt-4 mb-14 rounded border border-y border-border bg-foreground/5 dark:bg-foreground/5;
+}
+
+[data-rehype-pretty-code-figure] figcaption {
+  @apply border-t border-border px-5 py-2 text-xs italic;
+}
+
+/* Style Code blocks */
+[data-rehype-pretty-code-figure] code {
+  @apply grid w-max rounded-none border-0 bg-transparent break-words text-inherit;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code > [data-line] {
+  @apply min-h-[1.5rem] box-decoration-clone px-4 break-words;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block text-right text-foreground/20 dark:text-foreground/30;
+}
+
+[data-rehype-pretty-code-figure] code {
+  @apply grid min-w-full rounded-none border-0 box-decoration-clone p-0 break-words;
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code > [data-highlighted-line] {
+  @apply bg-primary/10 dark:bg-primary/5;
+}
+
+[data-rehype-pretty-code-title] {
+  @apply border-b border-border px-5 py-2 text-sm font-medium;
+}
+
+/* [data-rehype-pretty-code-figure] .data-line {
+  @apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
+} 
+
+[data-rehype-pretty-code-figure] .data-line-highlighted span {
+  @apply relative;
+}
+
+[data-rehype-pretty-code-figure] .word--highlighted {
+  @apply rounded-md bg-zinc-700/50 border-zinc-700/70 p-1;
+}
+
+.dark [data-rehype-pretty-code-figure] .word--highlighted {
+  @apply bg-zinc-900;
+}
+
+
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-2;
+} */
+
+.mdx > .steps:first-child > h4:first-child {
+  @apply mt-0;
+}
+
+.steps > h4 {
+  @apply mt-8 mb-4 text-base font-semibold;
+}

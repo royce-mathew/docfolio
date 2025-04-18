@@ -1,0 +1,45 @@
+---
+title: Modern Deploy Website
+description: An internship opportunity I recieved over the summer of 2023.
+tags: ["svelte", "tailwindcss", "supabase", "sveltekit"]
+imageSrc: /projects/modern-deploy/home.webp
+publishedDate: 2023-12-03
+modifiedDate: 2024-04-08
+hasToc: true
+---
+
+# Creating a new website
+
+The original website of Modern Deploy was built with Wix, a platform that resulted in slow and unresponsive performance. Moreover, the website lacked sufficient information about the company's vision and services. A company's website and online presence are crucial factors for its growth in the modern world.
+
+Therefore, I proposed to the owner of the company, in the first week of my internship, to create a new website with a new and modern programming language. After recieving approval, I started to develop a new website using SvelteKit and TailwindCSS, two cutting-edge technologies that offer speed, simplicity, and elegance.
+
+## Struggles
+
+In the course of the project, I encountered a challenge regarding the choice of a database. The company's requirements included storing files, images, and other data types. My initial idea was to use Firebase as the database solution, but after conducting extensive research on the best options that integrated well with SvelteKit, I decided on Supabase.
+
+Another problem that I had to overcome was to learn how to do Authorization and Authentication. The main problem which I faced during this was the lack of documentation on how to do this with SvelteKit. After spending a few days on this, I was able to figure out how to do this and implement it into the website.
+
+## Implementations
+
+### Authorization and Authentication
+
+The Authentication in the website is done utilizing Supabase's Auth API. Supabase allows for registration for users through email and password, it also allows for login through Google and Github.
+
+Modern Deploy wanted a login system which lets partner organizations login and view their files and allows administrators to login and upload files for the partners. I was able to create two seperate logins by creating a new table in the database which stores the user's role.
+
+When a user logs in, the website checks the user's role and redirects them to the correct page.
+
+### Fast website optimized for SEO
+
+Originally, the wix website was extremely slow and took a long time to load. When recreating the website from scratch, I knew that I had to make the website load fast while also being optimized for SEO.
+
+One of the main reasons that I decided to use SvelteKit was because of how significant the performance difference was when compared to React. SvelteKit also allows for server-side rendering, which means that the website is rendered on the server and then sent to the client. This allows for the website to load extremely fast.
+
+As for SEO, I used SvelteKit's built-in svelte:head tag to add meta information to the website. I also added OpenGraph tags to the website. This allows for the website to be shared on social media platforms such as Facebook and Twitter through an embed and preview information while not appearing as a plaintext link.
+
+### File and Information Upload
+
+One of the main functions that Modern Deploy wanted on their company website was the ability to upload files for partner organizations and for organizations to be able to view them easily.
+
+There are two settings in the Administrator Panel, one for companies and another one for QR Codes. I created a QR System which allows administrators to generate QR codes for a files and then hand them out for organizations who just want quick access to manuals.

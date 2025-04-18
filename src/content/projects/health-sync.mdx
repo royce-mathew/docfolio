@@ -1,0 +1,181 @@
+---
+title: HealthSync
+description: A sophisticated AI-powered medical charting and EMR documentation system built with Next.js and Together AI.
+tags: [nextjs, react, ai, medical]
+imageSrc: /projects/health-sync.png
+links:
+  github: https://github.com/royce-mathew/HealthSync
+publishedDate: 2025-02-02
+modifiedDate: 2025-02-02
+hasToc: true
+---
+
+# 🏥 HealthSync
+
+<div align="center">
+    ![HealthSync Logo](/projects/health-sync.png)
+
+    > A sophisticated AI-powered medical charting and EMR documentation system built with Next.js and Together AI.
+
+    <div className="flex flex-row space-x-3 justify-center mt-4">
+    <div>
+       [![Next.js](https://img.shields.io/badge/Next.js-15.1.6-blue.svg)](https://nextjs.org/)
+    </div>
+    <div>
+        [![React](https://img.shields.io/badge/React-19.0.0-61dafb.svg)](https://reactjs.org/)
+    </div>
+
+    </div>
+
+</div>
+
+## 🔍 Overview
+
+HealthSync is a cutting-edge medical documentation system that leverages artificial intelligence to streamline the patient intake process. It provides real-time, structured medical charting with an intuitive interface for healthcare professionals.
+
+## ✨ Features
+
+### AI-Powered Documentation
+
+- Real-time speech-to-text for verbal input
+- Intelligent SOAP format adherence
+- Automated medical terminology validation
+
+### Dual Chat Interface
+
+- Choose between two AI assistants (Ava & Eli)
+- Real-time conversation tracking
+- Voice input support with visual feedback
+
+### Dynamic Charting Display
+
+- Warning and message categorization
+- Visual indicators for different entry types
+- Real-time updates during consultation
+
+### Structured Data Processing
+
+- JSON-formatted medical records
+- SOAP-compliant documentation
+- Automated follow-up question generation
+
+## 🏗 Architecture
+
+```plaintext
+HealthSync/
+├── src/
+│   ├── pages/
+│   │   ├── index.js        # Main application router
+│   │   ├── HomePage.js     # Initial selection interface
+│   │   ├── ChatPage.js     # AI interaction interface
+│   │   ├── Charting.js     # Medical documentation display
+│   │   └── api/
+│   │       └── agent.js    # Together AI integration
+│   └── styles/
+│       ├── index.css       # Global styles
+│       ├── home.css        # Homepage styles
+│       ├── chat.css        # Chat interface styles
+│       └── charting.css    # Documentation styles
+```
+
+## 🛠 Technology Stack
+
+<Accordion type="multiple" className="mt-5 rounded bg-foreground/5 px-4">
+  <AccordionItem value="frontend">
+    <AccordionTrigger className="text-lg">Frontend</AccordionTrigger>
+    <AccordionContent>
+      Next.js 13 <br />
+      React 18 <br />
+      TailwindCSS <br />
+      Framer Motion <br />
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="ai">
+    <AccordionTrigger className="text-lg">AI Integration</AccordionTrigger>
+    <AccordionContent>
+      Together AI API <br />
+      OpenAI Whisper <br />
+      Custom AI Agents (Ava & Eli) <br />
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="tools">
+    <AccordionTrigger className="text-lg">Development Tools</AccordionTrigger>
+    <AccordionContent>
+      TypeScript <br />
+      ESLint <br />
+      Prettier <br />
+      Husky <br />
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## 📁 Project Structure
+
+The project follows a modular architecture with clear separation of concerns:
+
+- `pages/` - Route components and API endpoints
+- `components/` - Reusable UI components
+- `styles/` - Global and component-specific styles
+- `lib/` - Utility functions and API clients
+- `types/` - TypeScript type definitions
+- `public/` - Static assets and resources
+
+## 🧩 Components
+
+Key components include:
+
+- **ChatInterface** - Main conversation UI
+- **VoiceInput** - Speech recognition component
+- **ChartingDisplay** - Medical documentation view
+- **AgentSelector** - AI assistant selection interface
+
+## 🤖 AI Integration
+
+HealthSync uses Together AI's API for:
+
+- Natural language processing
+- Medical terminology validation
+- Automated documentation generation
+- Context-aware responses
+
+## 💅 Styling
+
+- TailwindCSS for utility-first styling
+- Custom CSS modules for complex components
+- Responsive design for all screen sizes
+- Dark/Light mode support
+
+## 🚀 Setup & Installation
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a `.env.` file:
+
+```bash
+TOGETHER_API_KEY=your_api_key_here
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+## 💻 Development
+
+- Build: `npm run build`
+- Lint: `npm run lint`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+<p align="center">Made with ❤️ for HackHive 2025</p>

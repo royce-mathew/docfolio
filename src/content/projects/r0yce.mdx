@@ -1,0 +1,70 @@
+---
+title: Portfolio
+label: { text: "Website" }
+description: A Personal Website Built with Next.js and Firebase.
+tags: [typescript, react, nextjs, firebase]
+imageSrc: /images/Portfolio.png
+publishedDate: 2025-02-16
+modifiedDate: 2025-02-16
+hasToc: true
+featured: true
+---
+
+# Overview
+
+The `r0yce.com` website leverages Next.js to serve MDX content in a flexible environment, supporting both static site generation and on-demand server rendering. The application tracks content for each page, including projects, blog posts, and other resources, using MDX files to store metadata and content.
+
+During the build process, We parse MDX files and taps into Next.js' routing to create optimized endpoints. Nested components and dynamic imports are automatically handled, minimizing initial load times while still providing rich content features.
+
+This setup allows me to quickly modify or add MDX documents without extensive reconfiguration, making it easy to maintain and update the site. The combination of Next.js and MDX to HTML conversion provides a robust foundation for content management, ensuring that the website remains responsive and user-friendly.
+
+## Learning Experience
+
+<Steps>
+### Firebase Integration
+
+Integrating Firebase with Next.js required handling serverless environments and client-side authentication. Firebase's client-side SDK manages user sessions and authentication, ensuring secure access to protected routes.
+
+### Velite Pipeline
+
+Velite's pipeline simplifies MDX parsing and custom component rendering, enabling the inclusion of interactive elements and dynamic features. The conversion process transforms MDX content into React components, enhancing readability and visual appeal.
+
+### Next.js Routing
+
+Next.js routing and dynamic imports optimize content delivery, ensuring that pages load quickly and efficiently. The combination of static site generation and server rendering provides a seamless user experience, with minimal loading times and improved performance.
+
+### SEO Optimization
+
+Optimized SEO and metadata enhance search engine visibility, making it easier for users to discover and access the website. By incorporating metadata and structured data, the website is more likely to appear in search results, increasing its online presence.
+
+</Steps>
+
+<br />
+
+# Content Organization
+
+```python
+./src/
+├─ content/             # Markdown content
+│ ├─ projects/          # Project pages in MDX format
+│ │ └─ r0yce.mdx
+│ └─ ...
+└─ app/                 # Application components
+   ├─ auth/             # Authentication
+   │  └─ ...
+   ├─ projects/         # Projects folder
+   │  └─ [slug]/        # Slug for each project. Dynamically loads the MDX content for the project.
+   └─ ...
+```
+
+Markdown Content is organized under the `/src/content` directory, with each page referencing an MDX file. Each MDX file contains frontmatter for metadata and custom components, such as accordions and steps.
+
+MDX content is imported and converted into HTML using Velite, which enables syntax highlighting and custom components. Velite processes the MDX files by parsing the markdown syntax and transforming it into React components. This allows for the inclusion of interactive elements, such as code blocks with syntax highlighting, diagrams, and other custom UI components. The conversion process ensures that the content is both readable and visually appealing, while maintaining the flexibility to include dynamic features.
+
+<br />
+
+# Authorization
+
+Authentication relies on Firebase, which stores user credentials and session details. Firebase's authentication system manages user sign-ins and provides secure access to protected routes. By integrating Firebase with Next.js, the application can authenticate users and manage sessions seamlessly.
+
+The authentication process is handled through Firebase's client-side SDK, which communicates with the server to verify user credentials. Firebase's authentication system ensures that user data is secure and protected, this is especially important for sensitive information such as user documents which is dealt with in Kanjou.

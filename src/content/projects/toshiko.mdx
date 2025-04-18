@@ -1,0 +1,85 @@
+---
+title: Toshiko
+description: Horror Game written in the Lua-U utilizing the Roblox Engine.
+tags: [roblox, lua-u, horror, game]
+imageSrc: /projects/toshiko.webp
+publishedDate: 2023-08-01
+modifiedDate: 2024-04-08
+columnSpan: 2
+rowSpan: 2
+hasToc: true
+---
+
+# Overview
+
+A First Person Survival Horror Game written in Lua-U. As the sole programmer of this project, I had to work together in a team with modelers, builders, and designers to create a game which was fun to play, had a good atmosphere, and mainly, was scary. The game was inspired by the "Resident Evil" series and "PT". It's currently being built on the Roblox Engine, and is in the final stages of development.
+
+## Learning Experience
+
+- Worked with a Server and Client architecture to handle game logic and user input.
+- Responsive Inventory System with Graphical User Interface.
+- Implemented a dynamic lighting system to create a dark and eerie atmosphere.
+- Dynamic Database System to store player data and game progress based on User Settings.
+- Several game events to create challenging and engaging gameplay.
+  <br />
+  <br />
+
+# Features
+
+## Database and Inventory System
+
+### How it works
+
+The game has a dynamic database system that stores player data and game progress based on the user's setting. A Player's data can be saved manually and automatically based on the setting they have enabled. The Inventory System is responsive and has a Graphical User Interface that allows the player to interact with items in the game world.
+
+### Internals
+
+Everytime the player loads into the game, the game checks their entry inside the database and loads their data. In the event that a player is new to the game, a new entry is created for them. Additionally, the database serves as a repository for user progress and inventory, allowing the game to accurately restore the player's previous location and inventory upon loading.
+
+A manual save system was also implemented, it utilizes the Database system which auto saves data before the player leaves the game. If the player has not manual saved, all progress data is stored inside a cache. When the player saves their data, the cache is then set as the player data which is automatically saved through the Database.
+
+## Party System
+
+<Grid>
+	
+	<GridItem>
+		<h3 className='text-xl font-semibold'>Inspiration</h3>
+
+    	The Party System was initially created to allow players to
+    	play together in the same game instance. I developed the comprehensive party
+    	system which allows players to invite friends from different servers to join
+    	their game instance.
+
+    	<h3 className='text-xl font-semibold mt-6'>How it works</h3>
+
+    	The system communicates across servers
+    	to send requests to other players. Instead of waiting for an immediate
+    	response, the game server efficiently listens for events on a designated
+    	hook. This approach ensures that the server doesn't block the thread or
+    	unnecessarily consume resources while awaiting a response.
+    </GridItem>
+    <GridItem>
+
+  		<Image src="/projects/party-system.webp" width={500} height={500} alt="Multiplayer invite window"/>
+	</GridItem>
+</Grid>
+
+## Custom Donation System
+
+<Grid>
+	<GridItem className="mt-5">
+		<YouTubeEmbed videoid="pLMtez3b6Po" width={400} height={300}/>		
+	</GridItem>
+	<GridItem>
+		<h3 className='text-xl font-semibold'>How it works</h3>
+
+    	The Custom Donation System lets players sponsor the developers with an amount based on their preference. The system communicates to a Backend server being hosted on RaspberryPi to create a new Developer Product.
+
+    	<h3 className='text-xl font-semibold mt-6'>Why?</h3>
+
+    	Roblox does not offer support inside its game engine for creating developer products. Originally the backend was written in Rust using my [roblox-api](https://github.com/royce-mathew/robloxapi) cargo crate.
+
+    	Later, I realized that maintaining both, the rust package, and also working on the game would be hard. So I decided to switch to TypeScript instead and use the [noblox.js](https://noblox.js.org/) package.
+    </GridItem>
+
+</Grid>
