@@ -1,9 +1,7 @@
 # Overview
 
 <div style="display: flex; align-items: center; gap: 20px;">
-   <a href="https://github.com/royce-mathew/r0yce">
-      <img src="./public/favicon.png" alt="Spyder" height="50" />
-   </a>
+   <img src="./public/favicon.png" alt="Spyder" height="50" />
    <b>A Portfolio Markdown Rendering Template Built with Next.js.</b>
 </div>
 
